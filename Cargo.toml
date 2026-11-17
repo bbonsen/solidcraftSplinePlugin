@@ -1,0 +1,23 @@
+[package]
+name = "solidcraft-spline"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+description = "SolidCraft plugin: involute, straight-sided, serrated, polygon, rounded-polygon and lobed splines on shafts and hubs"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+serde_json = "1"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wit-bindgen = "0.63"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
